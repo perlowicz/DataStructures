@@ -1,18 +1,13 @@
 package LinkedList.SingleLinkedList;
 
-public class SingleLinkedList<T> {
+class SingleLinkedList<T> {
 
     private Node<T> head;
     private int size;
 
-    public SingleLinkedList(Node<T> head) {
-        this.head = head;
-        size++;
-    }
+    SingleLinkedList(){}
 
-    public SingleLinkedList(){}
-
-    public void add(T data){
+    void add(T data){
         if (isEmpty())
             head = new Node<>(data);
         else {
@@ -25,7 +20,7 @@ public class SingleLinkedList<T> {
         size++;
     }
 
-    public void removeFromEnd(){
+    void removeFromEnd(){
         if (!isEmpty()){
             Node<T> tempNode = head;
             while (tempNode.getNext().getNext() != null){
@@ -36,14 +31,14 @@ public class SingleLinkedList<T> {
         }
     }
 
-    public void removeFromFront(){
+    void removeFromFront(){
         if (!isEmpty() && head.getNext() != null){
             head = head.getNext();
             size--;
         }
     }
 
-    public T get(int index){
+    T get(int index){
         if (index >= size || index < 0)
             throw new IndexOutOfBoundsException("Index " + index + " out of bound for length: " + size);
         else {
@@ -59,12 +54,25 @@ public class SingleLinkedList<T> {
         return null;
     }
 
-    public void clear(){
+    void clear(){
         head = null;
         size = 0;
     }
 
-    public void printList(){
+    void reverse(){
+        Node<T> next;
+        Node<T> curr = head;
+        Node<T> prev = null;
+        while (curr != null){
+            next = curr.getNext();
+            curr.setNext(prev);
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    }
+
+    void print(){
         if (isEmpty())
             System.out.println("Empty list");
         else {
@@ -78,7 +86,7 @@ public class SingleLinkedList<T> {
         }
     }
 
-    public int getSize() {
+    int getSize() {
         return size;
     }
 

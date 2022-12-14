@@ -1,5 +1,7 @@
 package LinkedList.SingleLinkedList;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,14 +19,14 @@ class SingleLinkedListTest {
         return randomSizeOfList;
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void add() {
         linkedList.clear();
         int sizeOfList = fillUp(linkedList);
         assertEquals(sizeOfList, linkedList.getSize());
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void removeFromEnd() {
         linkedList.clear();
         fillUp(linkedList);
@@ -33,7 +35,7 @@ class SingleLinkedListTest {
         assertEquals(secondLastValue, linkedList.get(linkedList.getSize()-1));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void removeFromFront() {
         linkedList.clear();
         fillUp(linkedList);
@@ -42,7 +44,7 @@ class SingleLinkedListTest {
         assertEquals(secondFirstValue, linkedList.get(0));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void get() {
         linkedList.clear();
         linkedList.add(9);
@@ -61,11 +63,22 @@ class SingleLinkedListTest {
         );
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getSize() {
         linkedList.clear();
         assertEquals(0, linkedList.getSize());
         int expectedSizeOfList = fillUp(linkedList);
         assertEquals(expectedSizeOfList, linkedList.getSize());
+    }
+
+    @Test
+    void checkReversion(){
+        linkedList.clear();
+        fillUp(linkedList);
+        Integer firstElementBeforeReversing = linkedList.get(0);
+        Integer lastElementBeforeReversing = linkedList.get(linkedList.getSize()-1);
+        linkedList.reverse();
+        assertEquals(lastElementBeforeReversing, linkedList.get(0));
+        assertEquals(firstElementBeforeReversing, linkedList.get(linkedList.getSize()-1));
     }
 }

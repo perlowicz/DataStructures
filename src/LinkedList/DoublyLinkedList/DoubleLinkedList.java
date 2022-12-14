@@ -1,4 +1,6 @@
 package LinkedList.DoublyLinkedList;
 
-public class DoubleLinkedList {
+class DoubleLinkedList<T> {
+    Node<T> head;
+    Node<T> tail;
 }
