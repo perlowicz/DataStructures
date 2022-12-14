@@ -1,13 +1,16 @@
 package LinkedList.SingleLinkedList;
 
-class SingleLinkedList<T> {
+import LinkedList.List;
+
+public class SingleLinkedList<T> implements List<T> {
 
     private Node<T> head;
     private int size;
 
     SingleLinkedList(){}
 
-    void add(T data){
+    @Override
+    public void push(T data){
         if (isEmpty())
             head = new Node<>(data);
         else {
@@ -20,7 +23,8 @@ class SingleLinkedList<T> {
         size++;
     }
 
-    void removeFromEnd(){
+    @Override
+    public void removeFromEnd(){
         if (!isEmpty()){
             Node<T> tempNode = head;
             while (tempNode.getNext().getNext() != null){
@@ -31,17 +35,19 @@ class SingleLinkedList<T> {
         }
     }
 
-    void removeFromFront(){
+    @Override
+    public void removeFromFront(){
         if (!isEmpty() && head.getNext() != null){
             head = head.getNext();
             size--;
         }
     }
 
-    T get(int index){
+    @Override
+    public T get(int index){
         if (index >= size || index < 0)
             throw new IndexOutOfBoundsException("Index " + index + " out of bound for length: " + size);
-        else {
+        else if(!isEmpty()){
             Node<T> tempNode = head;
             int indexCounter = 0;
             while (tempNode != null){

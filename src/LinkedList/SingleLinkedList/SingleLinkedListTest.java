@@ -1,56 +1,47 @@
 package LinkedList.SingleLinkedList;
 
+import LinkedList.TestTools;
 import org.junit.jupiter.api.Test;
-
-import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SingleLinkedListTest {
+public class SingleLinkedListTest {
 
-    Random r = new Random();
-    SingleLinkedList<Integer> linkedList = new SingleLinkedList<>();
-
-    int fillUp(SingleLinkedList<Integer> linkedList){
-        int randomSizeOfList = r.nextInt(30) + 10;
-        for (int i = 0; i < randomSizeOfList; i++) {
-            linkedList.add(r.nextInt(100));
-        }
-        return randomSizeOfList;
-    }
+    private SingleLinkedList<Integer> linkedList = new SingleLinkedList<>();
 
     @Test
     void add() {
         linkedList.clear();
-        int sizeOfList = fillUp(linkedList);
+        int sizeOfList = TestTools.fillUp(linkedList);
         assertEquals(sizeOfList, linkedList.getSize());
     }
 
     @Test
     void removeFromEnd() {
         linkedList.clear();
-        fillUp(linkedList);
-        Integer secondLastValue = linkedList.get(linkedList.getSize()-2);
+        TestTools.fillUp(linkedList);
+        Integer firstExpectedValue = linkedList.get(linkedList.getSize()-2);
+        Integer secondExpectedValue = linkedList.get(1);
         linkedList.removeFromEnd();
-        assertEquals(secondLastValue, linkedList.get(linkedList.getSize()-1));
-    }
-
-    @Test
-    void removeFromFront() {
-        linkedList.clear();
-        fillUp(linkedList);
-        Integer secondFirstValue = linkedList.get(1);
         linkedList.removeFromFront();
-        assertEquals(secondFirstValue, linkedList.get(0));
+
+        assertEquals(
+                firstExpectedValue,
+                linkedList.get(linkedList.getSize()-1)
+        );
+        assertEquals(
+                secondExpectedValue,
+                linkedList.get(0)
+        );
     }
 
     @Test
     void get() {
         linkedList.clear();
-        linkedList.add(9);
-        linkedList.add(7);
-        linkedList.add(2);
-        linkedList.add(232);
+        linkedList.push(9);
+        linkedList.push(7);
+        linkedList.push(2);
+        linkedList.push(232);
         assertEquals(7, linkedList.get(1));
         assertEquals(232, linkedList.get(3));
         assertThrows(
@@ -67,14 +58,14 @@ class SingleLinkedListTest {
     void getSize() {
         linkedList.clear();
         assertEquals(0, linkedList.getSize());
-        int expectedSizeOfList = fillUp(linkedList);
+        int expectedSizeOfList = TestTools.fillUp(linkedList);
         assertEquals(expectedSizeOfList, linkedList.getSize());
     }
 
     @Test
     void checkReversion(){
         linkedList.clear();
-        fillUp(linkedList);
+        TestTools.fillUp(linkedList);
         Integer firstElementBeforeReversing = linkedList.get(0);
         Integer lastElementBeforeReversing = linkedList.get(linkedList.getSize()-1);
         linkedList.reverse();
