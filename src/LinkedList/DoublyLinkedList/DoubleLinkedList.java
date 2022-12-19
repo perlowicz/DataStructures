@@ -3,6 +3,7 @@ package LinkedList.DoublyLinkedList;
 import LinkedList.List;
 
 class DoubleLinkedList<T> implements List<T> {
+
     private Node<T> head;
     private int size;
 

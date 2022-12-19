@@ -12,11 +12,11 @@ public class BinaryTree<T extends Comparable<T>> {
         if (current == null)
             return new Node<>(value);
 
-        if (value.compareTo(current.getValue()) < 0){
+        if (!firstIsGreaterThanSecond(value, current.getValue())){
             current.setLeft(
                     addNode(current.getLeft(), value)
             );
-        } else if (value.compareTo(current.getValue()) > 0){
+        } else if (firstIsGreaterThanSecond(value, current.getValue())){
             current.setRight(
                     addNode(current.getRight(), value)
             );
@@ -49,7 +49,7 @@ public class BinaryTree<T extends Comparable<T>> {
         if (current == null){
             return null;
         }
-        if (value.compareTo(current.getValue()) == 0){
+        if (areEquals(value, current.getValue())){
             if (current.getLeft() == null && current.getRight() == null) {
                 return null;
             }
@@ -67,7 +67,7 @@ public class BinaryTree<T extends Comparable<T>> {
             );
             return current;
         }
-        if (value.compareTo(current.getValue()) < 0){
+        if (!firstIsGreaterThanSecond(value, current.getValue())){
             current.setLeft(
                     deleteNode(current.getLeft(), value)
             );
@@ -109,5 +109,13 @@ public class BinaryTree<T extends Comparable<T>> {
 
     public Node<T> getRoot() {
         return root;
+    }
+
+    private boolean firstIsGreaterThanSecond(T firstValue, T secondValue){
+        return firstValue.compareTo(secondValue) > 0;
+    }
+
+    private boolean areEquals(T firstValue, T secondValue){
+        return firstValue.compareTo(secondValue) == 0;
     }
 }

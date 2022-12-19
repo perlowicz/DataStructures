@@ -6,7 +6,7 @@ public class TestTools {
 
     private static Random r = new Random();
 
-    static Integer[] fillStackAndGetTestingValues(Stack<Integer> stack){
+    static Integer[] fillStackAndReturnTestingValues(Stack<Integer> stack){
         Integer[] testingArray = new Integer[stack.getCapacity()];
         for (int i = 0; i < stack.getCapacity(); i++) {
             int randomNumber = r.nextInt(100);

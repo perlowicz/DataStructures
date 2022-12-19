@@ -10,14 +10,14 @@ class StackTest {
 
     @Test
     void pushTest(){
-        Integer[] expectedValues = TestTools.fillStackAndGetTestingValues(stack);
+        Integer[] expectedValues = TestTools.fillStackAndReturnTestingValues(stack);
         assertArrayEquals(expectedValues, stack.getArray());
     }
 
     @Test
     void popTest(){
         stack.clear();
-        Integer[] expectedValues = TestTools.fillStackAndGetTestingValues(stack);
+        Integer[] expectedValues = TestTools.fillStackAndReturnTestingValues(stack);
         for (int i = 0; i < expectedValues.length-1; i++) {
             stack.pop();
         }
@@ -33,7 +33,7 @@ class StackTest {
     @Test
     void peekTest(){
         stack.clear();
-        Integer[] expectedValues = TestTools.fillStackAndGetTestingValues(stack);
+        Integer[] expectedValues = TestTools.fillStackAndReturnTestingValues(stack);
         stack.peek();
         stack.peek();
         stack.peek();

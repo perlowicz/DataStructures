@@ -17,6 +17,10 @@ class BinaryTreeTest {
         binaryTree.add(4);
 
         binaryTree.traverseInOrder(binaryTree.getRoot());
+        System.out.println();
+        binaryTree.traversePostOrder(binaryTree.getRoot());
+        System.out.println();
+        binaryTree.traversePreOrder(binaryTree.getRoot());
 
         assertTrue(binaryTree.contains(1));
         assertTrue(binaryTree.contains(2));

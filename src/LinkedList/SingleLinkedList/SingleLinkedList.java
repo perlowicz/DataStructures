@@ -2,7 +2,7 @@ package LinkedList.SingleLinkedList;
 
 import LinkedList.List;
 
-public class SingleLinkedList<T> implements List<T> {
+class SingleLinkedList<T> implements List<T> {
 
     private Node<T> head;
     private int size;
